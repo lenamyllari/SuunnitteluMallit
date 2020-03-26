@@ -1,7 +1,7 @@
 package ComputerParts;
 
 public class Case implements CompositeComputerPart{
-
+	private List <ComputerPart> parts = new ArrayList<ComputerPart>();
 	private int price;
 
 	public Case(int price) {
@@ -10,12 +10,15 @@ public class Case implements CompositeComputerPart{
 	
 	@Override
 	public int getPrice() {
+		for (ComputerPart cp : parts){
+		price += cp.getPrice();
+		}
 		return price;
 	}
 
 	@Override
 	public void addPart(ComputerPart part) {
-		this.price +=part.getPrice();
+		parts.add(part);
 	}
 
 }
