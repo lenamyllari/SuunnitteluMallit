@@ -1,7 +1,7 @@
 package ComputerParts;
 
 public class MotherBoard implements CompositeComputerPart{
-
+	private List <ComputerPart> parts = new ArrayList<ComputerPart>();
 	private int price;
 
 	public MotherBoard(int price) {
@@ -10,11 +10,14 @@ public class MotherBoard implements CompositeComputerPart{
 	
 	@Override
 	public int getPrice() {
+		for (ComputerPart cp : parts){
+			price += cp.getPrice();
+		}
 		return price;
 	}
 
 	@Override
 	public void addPart(ComputerPart part) {
-		this.price +=part.getPrice();
+		parts.add(part);
 	}
 }
