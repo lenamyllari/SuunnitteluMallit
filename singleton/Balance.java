@@ -11,7 +11,9 @@ public class Balance {
 	}
 	
 	public static Balance getInstance(){ 
-		return balanceInstance; 
+		synchronized(Balance.class) {
+			return balanceInstance; 
+		} 
 	}
 
 
