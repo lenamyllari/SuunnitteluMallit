@@ -10,10 +10,10 @@ public class Balance {
 		this.balance=0;
 	}
 	
-	public static Balance getInstance(){ 
-		synchronized(Balance.class) {
-			return balanceInstance; 
-		} 
+	public static synchronized Balance getInstance(){ 
+		
+		return balanceInstance; 
+		
 	}
 
 
