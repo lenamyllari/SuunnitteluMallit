@@ -1,8 +1,6 @@
 package state;
 
 public class Charmander implements PokemonState{
-	private int amountRun;
-	private int amountAttack;
 
 	@Override
 	public void tellName() {
@@ -13,9 +11,9 @@ public class Charmander implements PokemonState{
 	@Override
 	public void attack(Pokemon pokemon) {
 		System.out.println("Beware of my flamethrower!");
-		amountAttack++;
-		if(checkUpgrade()) {
-			pokemon.upgrade();
+		pokemon.updateAttack(1);
+		if(pokemon.getAmountAttack() + pokemon.getAmountRun() >=5) {
+			upgrade(pokemon);
 		}
 		
 	}
@@ -23,9 +21,9 @@ public class Charmander implements PokemonState{
 	@Override
 	public void run(Pokemon pokemon) {
 		System.out.println("I'm walking!");
-		amountRun++;
-		if(checkUpgrade()) {
-			pokemon.upgrade();
+		pokemon.updateRun(1);
+		if(pokemon.getAmountAttack() + pokemon.getAmountRun() >=5) {
+			upgrade(pokemon);
 		}
 	}
 
@@ -34,14 +32,5 @@ public class Charmander implements PokemonState{
 		pokemon.setState(new Charmeleon());
 		pokemon.tellName();
 	}
-
-	@Override
-	public boolean checkUpgrade() {
-		if(amountRun + amountAttack >=5) {
-			return true;
-		}
-		return false;
-	}
-
 	
 }
