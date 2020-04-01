@@ -5,5 +5,4 @@ public interface PokemonState {
 	public void attack(Pokemon pokemon);
 	public void run(Pokemon pokemon);
 	public void upgrade(Pokemon pokemon);
-	public boolean checkUpgrade();
 }
