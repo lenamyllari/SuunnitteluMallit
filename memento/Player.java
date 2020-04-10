@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 //caretaker
-public class Player {
+public class Player implements Runnable{
 	private Riddler riddler;
 	private int id;
 	private Object obj;
@@ -45,5 +45,12 @@ public class Player {
 		else {
 			guess();
 		}
+	}
+	
+	@Override
+	public void run() {
+		joinGame();
+		guess();
+		
 	}
 }
